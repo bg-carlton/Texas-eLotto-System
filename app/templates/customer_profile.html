@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Profile</h1>
+    </header>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .profile {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+            margin: 0 auto;
+        }
+        .profile h1 {
+            text-align: center;
+        }
+        .profile p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    {% include 'user_nav.html' %}
+
+    <div class="profile">
+        <h1>Customer Profile</h1>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Birthday:</strong> {{ user.birthday }}</p>
+        <p><strong>Phone Number:</strong> {{ user.phonenum }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <!-- Display other user details as needed -->
+    </div>
+
+</body>
+</html>

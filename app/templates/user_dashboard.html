@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to the Texas eLotto Systems!</h1>
+    </header>
+
+    {% include 'user_nav.html' %}
+
+    <main>
+        <form action="/search" method="get">
+            <label for="search">Search:</label>
+            <input type="text" id="search" name="q" placeholder="Enter keywords...">
+            <button type="submit">Search</button>
+        </form>
+        <br>
+        <h2>Browse All</h2>
+        
+        {% for lotto in lottos %}
+                <li>
+                    <strong>{{ lotto.name }}</strong>
+                    <p>Price Per Ticket: ${{ lotto.pricePerTicket }}</p>
+                    <p>Start Date: {{ lotto.startDate }}</p>
+                    <p>End Date: {{ lotto.endDate }}</p>
+                    <a href="{{ url_for('purchase', lotto_id=lotto.id) }}">Purchase</a><br><br>
+                </li>
+        {% endfor %}
+    </main>
+</body>
+</html>

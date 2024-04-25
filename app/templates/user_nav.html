@@ -1,0 +1,23 @@
+<nav>   
+
+    {% if current_user.is_authenticated %}
+        <span class="nav_space"></span>
+        <a href="/user_dashboard">Browse All</a>
+        <span class="nav_space"></span>
+        <a href="{{ url_for('order_history') }}">Order Histoy</a>
+        <span class="nav_space"></span>
+        <a href="{{ url_for('check_winner') }}">Are you a winner?</a>
+        <span class="nav_space"></span>
+        <a href="{{ url_for('view_winners') }}">Previous Winners</a>
+        <span class="nav_space"></span>
+
+
+        <a href="{{ url_for('customer_profile') }}">Profile</a>
+        <span class="nav_space"></span>
+        <span>Hello, {{ current_user.username }}!</span>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+        <span class="nav_space"></span>
+        <a href="{{ url_for('signin') }}">Login</a>
+    {% endif %}
+</nav>

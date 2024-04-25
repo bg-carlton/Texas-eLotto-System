@@ -1,0 +1,31 @@
+<nav>
+    <span class="nav_space"></span>
+    <a href="/admin_dashboard">Dashboard</a>
+
+    <span class="nav_space"></span>
+    <a href="/user_list">User List</a>
+
+    <span class="nav_space"></span>
+    <a href="/user_lotto_list">Lotto List</a>
+
+    <span class="nav_space"></span>
+    <a href="/add_lotto">Add Lotto</a>
+
+    <span class="nav_space"></span>
+    <a href="/tickets_sold">Tickets Sold</a>
+
+    <span class="nav_space"></span>
+    <a href="/ticket_counter">Tickets Info</a>
+
+    <span class="nav_space"></span>
+    <a href="/view_winners">View Winners</a>
+
+    {% if current_user.is_authenticated %}
+        <span class="nav_space"></span>
+        <span>Hello, {{ current_user.username }}!</span>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+        <span class="nav_space"></span>
+        <a href="{{ url_for('signin') }}">Login</a>
+    {% endif %}
+</nav>

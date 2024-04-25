@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Order History</h1>
+    </header>
+
+    {% include 'user_nav.html' %}
+
+    <main>
+        <h2>All Purchased Tickets</h2>
+        <ul>
+            {% for ticket in tickets %}
+                <li>
+                    Lotto Name: {{ ticket.lotto.name }}<br>
+                    Price: ${{ ticket.lotto.pricePerTicket }}<br>
+                    Ticket Numbers: {{ ticket.ticket_number1 }} {{ ticket.ticket_number2 }} {{ ticket.ticket_number3 }} {{ ticket.ticket_number4 }} {{ ticket.ticket_number4 }}<br>
+                    Expiration Date: {{ ticket.expiration_date }}<br>
+                    Card Number: {{ ticket.card_number }}<br><br>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>

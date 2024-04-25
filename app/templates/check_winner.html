@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your head content here -->
+</head>
+<body>
+
+    <header>
+        <h1>Are you a winner?</h1>
+    </header>
+
+    {% if is_winner is defined %}
+        {% if is_winner %}
+            <h4>Congratulations! You are a winner!</h4>
+            {% if payout_amount is defined %}
+                <p>Payout Amount: Not available%</p>
+            {% else %}
+                <p>Payout Amount: Not available</p>
+            {% endif %}
+        {% else %}
+            <p>Sorry, you are not a winner. Better luck next time!</p>
+        {% endif %}
+    {% endif %}
+
+    {% if recent_winner %}
+        <p>Winning Numbers: {{ recent_winner.ticket_number1 }}, {{ recent_winner.ticket_number2 }}, {{ recent_winner.ticket_number3 }}, {{ recent_winner.ticket_number4 }}, {{ recent_winner.ticket_number5 }}</p>
+    {% endif %}
+
+    <form action="{{ url_for('check_winner') }}" method="post">
+        <label for="lotto_id">Select Lotto:</label>
+        <select name="lotto_id" id="lotto_id" required>
+            {% for lotto in lottos %}
+                <option value="{{ lotto.id }}">{{ lotto.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Check Winner</button>
+    </form>
+</body>
+</html>

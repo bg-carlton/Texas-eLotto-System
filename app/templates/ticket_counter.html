@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Counter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Ticket Counter</h1>
+    </header>
+
+    <!-- Include the navigation bar if needed -->
+    {% include 'admin_nav.html' %}
+
+    <main>
+        <h2>All Purchased Tickets</h2>
+        <ul>
+            {% for lotto_id, total_cost in ticket_costs %}
+                <li>
+                    Lotto ID: {{ lotto_id }}<br>
+                    Total Cost: ${{ total_cost }}<br><br>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+
+</body>
+</html>

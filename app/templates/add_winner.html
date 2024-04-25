@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Add Winner</h1>
+    </header>
+
+    {% include 'admin_nav.html' %}
+
+    <main>
+        <h2>Add Winner to {{ lotto.name }}:</h2>
+        <p>Recomended Numbers:</p>
+        <form action="{{ url_for('add_winner', lotto_id=lotto.id) }}" method="post">
+            {% for num in random_numbers %}
+                <p>{{ num }}</p>
+            {% endfor %} 
+            <br>
+            <label for="ticket_number1">Ticket Number 1:</label>
+            <input type="text" id="ticket_number1" name="ticket_number1" required><br>
+            <label for="ticket_number2">Ticket Number 2:</label>
+            <input type="text" id="ticket_number2" name="ticket_number2" required><br>
+            <label for="ticket_number3">Ticket Number 3:</label>
+            <input type="text" id="ticket_number3" name="ticket_number3" required><br>
+            <label for="ticket_number4">Ticket Number 4:</label>
+            <input type="text" id="ticket_number4" name="ticket_number4" required><br>
+            <label for="ticket_number5">Ticket Number 5:</label>
+            <input type="text" id="ticket_number5" name="ticket_number5" required><br><br>
+
+            <button type="submit">Add Winner</button>
+        </form>
+    </main>
+</body>
+</html>

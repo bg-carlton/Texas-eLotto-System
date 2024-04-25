@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Search Results</h1>
+    </header>
+
+    <!-- Include the navigation bar -->
+    {% include 'user_nav.html' %}
+
+    <main>
+        <p>Showing search results for "{{ search_query }}":</p>
+        <ul>
+            {% for lotto in results %}
+                <li>
+                    <strong>{{ lotto.name }}</strong>
+                    <p>{{ lotto.description }}</p>
+                    <p>Price Per Ticket: ${{ lotto.pricePerTicket }}</p>
+                    <p>Start Date: {{ lotto.startDate }}</p>
+                    <p>End Date: {{ lotto.endDate }}</p>
+                    <a href="{{ url_for('purchase', lotto_id=lotto.id) }}">Purchase</a><br><br>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Purchase</h1>
+    </header>
+
+    {% include 'user_nav.html' %}
+
+    <main>
+        <p>You are purchasing {{ lotto.name }}:</p>
+        <p>Description: {{ lotto.description }}</p>
+        <p>Price Per Ticket: ${{ lotto.pricePerTicket }}</p>
+        <p>Start Date: {{ lotto.startDate }}</p>
+        <p>End Date: {{ lotto.endDate }}</p>
+
+        <form action="{{ url_for('purchase', lotto_id=lotto.id) }}" method="post">
+            <!-- Add your additional fields for card and billing information here -->
+            <label for="ticket_number1">Ticket Number 1:</label>
+            <input type="text" id="ticket_number1" name="ticket_number1" required><br>
+            <label for="ticket_number2">Ticket Number 2:</label>
+            <input type="text" id="ticket_number2" name="ticket_number2" required><br>
+            <label for="ticket_number3">Ticket Number 3:</label>
+            <input type="text" id="ticket_number3" name="ticket_number3" required><br>
+            <label for="ticket_number4">Ticket Number 4:</label>
+            <input type="text" id="ticket_number4" name="ticket_number4" required><br>
+            <label for="ticket_number5">Ticket Number 5:</label>
+            <input type="text" id="ticket_number5" name="ticket_number5" required><br><br>
+            
+            <label for="card_number">Card Number:</label>
+            <input type="text" id="card_number" name="card_number" required><br>
+
+            <label for="expiration_date">Expiration Date:</label>
+            <input type="text" id="expiration_date" name="expiration_date" required><br>
+
+            <label for="billing_address">Billing Address:</label>
+            <textarea id="billing_address" name="billing_address" required></textarea><br>
+
+            <button type="submit">Purchase</button>
+        </form>
+    </main>
+</body>
+</html>

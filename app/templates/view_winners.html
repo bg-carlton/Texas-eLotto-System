@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winners</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Winners</h1>
+    </header>
+    
+    <main>
+        <h2>All Winners</h2>
+        <ul>
+            {% for winner in winners %}
+                <li>
+                    Ticket Numbers:{{ winner.ticket_number1 }} {{ winner.ticket_number2 }} {{ winner.ticket_number3 }} {{ winner.ticket_number4 }} {{ winner.ticket_number5 }}
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+
+</body>
+</html>
